@@ -102,14 +102,6 @@
   .art-ac .rays i{flex:1;border-radius:2px}
   .art-ac b{font:600 30px/1 var(--sans);letter-spacing:-.02em}
   .art-ac small{font:500 12px var(--mono);color:#6a6a65}
-  .art-cache{background:#0b0b0d;align-items:center;justify-content:center;padding:18px}
-  .art-cache .term{width:100%;border:1px solid #2b2b31;border-radius:10px;padding:12px;font:500 12px var(--mono);color:#b9b9c4;display:flex;flex-direction:column;gap:10px}
-  .art-cache .row{display:flex;flex-wrap:wrap;gap:6px}
-  .art-cache .row span{border:1px solid #33333b;border-radius:6px;padding:4px 8px}
-  .art-cache .row span.ok{color:var(--live);border-color:#2c5a3e}
-  .art-cache .meter{height:6px;border-radius:3px;background:#24242b;overflow:hidden}
-  .art-cache .meter i{display:block;height:100%;width:63%;background:linear-gradient(90deg,var(--local),var(--accent))}
-  .art-cache .prompt{color:#6f6f7a}
   .art-w{background:#14110f;padding:22px 26px;font:400 14px/1.75 var(--mono);color:#cfc6bc;flex-direction:column;justify-content:center}
   .art-w .bad{color:#ff6a6a;text-decoration:line-through}
   .art-w .good{color:var(--live)}
@@ -168,9 +160,6 @@ const ART = {
       <p>Je m’appelle Daniel.</p><small>Ich heiße Daniel. · Niveau A1</small></div>`,
   academy: `<div class="art art-ac"><div class="rays">${['#00a3e0','#46b6e8','#6cc24a','#9fd36a','#f6a800','#f2c44b','#e94e77'].map(c => `<i style="background:${c}"></i>`).join('')}</div>
       <div><b>Academy</b><br><small>Kurse · Akademien · Theme-Editor</small></div></div>`,
-  cache: `<div class="art art-cache"><div class="term">
-      <div class="row"><span class="ok">Cache 4:12</span><span>Treffer 92 %</span><span>Kontext ☀</span><span>Compact</span></div>
-      <div class="meter"><i></i></div><div class="prompt">› Frag Claude etwas …</div></div></div>`,
   waechter: `<div class="art art-w"><div>Claude/</div><div>├─ PARA Cockpit/</div><div>├─ Krallen-Spiel/</div>
       <div>├─ <span class="bad">notiz.txt</span></div><div class="good">└─ ✓ jedes Projekt im eigenen Ordner</div></div>`
 };

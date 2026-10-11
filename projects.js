@@ -73,17 +73,6 @@ window.PROJECTS = [
     folder: 'Kurs Plattform-Zukunftssmarter'
   },
   {
-    title: 'Cache-Leiste',
-    kind: 'Werkzeug',
-    date: '2026-10',
-    status: 'lokal',
-    desc: 'Erweiterung für Claude Code: eine Leiste über dem Eingabefeld mit Cache-Restzeit, Trefferquote, Kontext-Füllstand und einem Compact-Knopf.',
-    tags: ['Claude Code', 'Mod'],
-    cover: {type: 'art', id: 'cache'},
-    links: [],
-    folder: 'Claude Code Mods\\cache-leiste'
-  },
-  {
     title: 'Projektwächter',
     kind: 'Werkzeug',
     date: '2026-10',
