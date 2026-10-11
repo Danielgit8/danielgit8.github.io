@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daniel – Projekte</title>
+<meta name="description" content="Apps, ein Spiel, Videos und Werkzeuge – alles, was ich mit KI baue.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#0f0d0c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f0d0c; --panel:#171412; --line:#2a2522; --text:#f2ece4; --muted:#a39a90; --faint:#6f6760;
+    --accent:#ff6a3d; --live:#5fd38d; --priv:#e0b14a; --local:#8fa7ff;
+    --serif:'Instrument Serif',Georgia,serif; --sans:'Geist',system-ui,sans-serif; --mono:'Geist Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html{background:var(--bg)}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  @media (max-width:600px){.wrap{padding:0 16px}}
+
+  /* Kopf */
+  .top{display:flex;justify-content:space-between;align-items:center;padding:22px 0;font:500 13px var(--mono);color:var(--muted);letter-spacing:.02em}
+  .top b{color:var(--text);font-weight:500}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:10px;vertical-align:1px}
+  header.hero{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+  h1{font:400 clamp(52px,9vw,112px)/.95 var(--serif);letter-spacing:-.02em;margin:0 0 22px}
+  h1 em{color:var(--accent)}
+  .lead{max-width:560px;color:var(--muted);font-size:18px;margin:0}
+  .stats{display:flex;flex-wrap:wrap;gap:10px 36px;margin-top:36px}
+  .stat{display:flex;align-items:baseline;gap:10px}
+  .stat b{font:400 40px/1 var(--serif)}
+  .stat span{font:500 12px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+
+  /* Filter */
+  .bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .filters{display:flex;gap:8px;padding:14px 0;overflow-x:auto;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .chip{flex:none;font:500 13px var(--sans);color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer}
+  .chip:hover{color:var(--text);border-color:#4a423d}
+  .chip[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+  .chip small{opacity:.6;margin-left:6px;font-family:var(--mono)}
+
+  /* Karten */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px;padding:30px 0 70px}
+  @media (max-width:420px){.grid{grid-template-columns:1fr}}
+  .card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .25s ease,border-color .25s ease}
+  .card:hover{transform:translateY(-3px);border-color:#3d3531}
+  .card.feature{grid-column:1/-1}
+  @media (min-width:860px){.card.feature{flex-direction:row}.card.feature .cover{flex:1.5;aspect-ratio:auto;min-height:380px}.card.feature .body{flex:1}}
+  .cover{position:relative;aspect-ratio:16/10;overflow:hidden;background:#000}
+  .cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+  .card:hover .cover img{transform:scale(1.03)}
+  .body{display:flex;flex-direction:column;gap:12px;padding:20px 22px 22px}
+  .meta{display:flex;align-items:center;gap:10px;font:500 12px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .status{display:inline-flex;align-items:center;gap:6px}
+  .status::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor}
+  .s-live{color:var(--live)} .s-privat{color:var(--priv)} .s-lokal{color:var(--local)}
+  .meta .sep{opacity:.4}
+  h2{font:400 34px/1.05 var(--serif);margin:0;letter-spacing:-.01em}
+  .desc{margin:0;color:#cfc6bc;font-size:15px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+  .tags li{font:500 12px var(--mono);color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+  .extras{margin:0;padding:0 0 0 16px;color:var(--muted);font-size:14px}
+  .extras li{margin:3px 0}
+  .foot{margin-top:auto;display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding-top:6px}
+  .btn{display:inline-flex;align-items:center;gap:6px;font:600 14px var(--sans);text-decoration:none;padding:9px 16px;border-radius:999px;border:1px solid var(--line);color:var(--text);background:transparent;cursor:pointer}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#1a0c06}
+  .btn:hover{filter:brightness(1.1)}
+  .folder{font:400 12px var(--mono);color:var(--faint);width:100%;word-break:break-all}
+  .play{position:absolute;inset:0;margin:auto;width:68px;height:68px;border-radius:50%;border:0;background:rgba(15,13,12,.75);color:#fff;font-size:24px;cursor:pointer;backdrop-filter:blur(6px)}
+  .play:hover{background:var(--accent);color:#1a0c06}
+
+  /* Gezeichnete Titelbilder */
+  .art{position:absolute;inset:0;display:flex}
+  .art-para{background:radial-gradient(120% 90% at 20% 0%,#2a2724,#0c0b0a);padding:22px;flex-direction:column;gap:10px}
+  .art-para .p-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .art-para .p-grid div{border:1px solid #3a3531;border-radius:10px;padding:12px;font:500 13px var(--sans);color:#d8d0c7;display:flex;flex-direction:column;justify-content:space-between}
+  .art-para .p-grid div b{font:400 30px/1 var(--serif);color:var(--text)}
+  .art-para .p-grid div:first-child{background:#f2ece4;color:#2a2522}
+  .art-para .p-grid div:first-child b{color:#0f0d0c}
+  .art-para .habits{display:flex;gap:6px}
+  .art-para .habits i{flex:1;height:8px;border-radius:3px;background:#3a3531}
+  .art-para .habits i.on{background:var(--live)}
+  .art-fr{background:#2347c5;color:#fff;flex-direction:column;justify-content:center;padding:26px 28px;gap:12px}
+  .art-fr .flag{display:flex;width:84px;height:10px;border-radius:2px;overflow:hidden}
+  .art-fr .flag i{flex:1}.art-fr .flag i:nth-child(1){background:#8ea0ff}.art-fr .flag i:nth-child(2){background:#fff}.art-fr .flag i:nth-child(3){background:#e5483f}
+  .art-fr p{margin:0;font:italic 400 clamp(30px,4vw,40px)/1.05 var(--serif)}
+  .art-fr small{font:500 13px var(--mono);opacity:.75}
+  .art-ac{background:#efeee8;padding:22px;flex-direction:column;justify-content:space-between;color:#1d1d1b}
+  .art-ac .rays{display:flex;gap:6px;height:56%}
+  .art-ac .rays i{flex:1;border-radius:2px}
+  .art-ac b{font:600 30px/1 var(--sans);letter-spacing:-.02em}
+  .art-ac small{font:500 12px var(--mono);color:#6a6a65}
+  .art-cache{background:#0b0b0d;align-items:center;justify-content:center;padding:18px}
+  .art-cache .term{width:100%;border:1px solid #2b2b31;border-radius:10px;padding:12px;font:500 12px var(--mono);color:#b9b9c4;display:flex;flex-direction:column;gap:10px}
+  .art-cache .row{display:flex;flex-wrap:wrap;gap:6px}
+  .art-cache .row span{border:1px solid #33333b;border-radius:6px;padding:4px 8px}
+  .art-cache .row span.ok{color:var(--live);border-color:#2c5a3e}
+  .art-cache .meter{height:6px;border-radius:3px;background:#24242b;overflow:hidden}
+  .art-cache .meter i{display:block;height:100%;width:63%;background:linear-gradient(90deg,var(--local),var(--accent))}
+  .art-cache .prompt{color:#6f6f7a}
+  .art-w{background:#14110f;padding:22px 26px;font:400 14px/1.75 var(--mono);color:#cfc6bc;flex-direction:column;justify-content:center}
+  .art-w .bad{color:#ff6a6a;text-decoration:line-through}
+  .art-w .good{color:var(--live)}
+
+  dialog{border:0;padding:0;background:transparent;max-width:min(92vw,420px)}
+  dialog::backdrop{background:rgba(5,4,4,.85)}
+  dialog video{width:100%;max-height:86vh;border-radius:14px;display:block;background:#000}
+  dialog form{text-align:right;margin-bottom:8px}
+
+  footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--faint);font:400 13px var(--mono);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+  .empty{color:var(--muted);padding:40px 0}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span><span class="dot"></span><b>Daniel</b> · Projekte</span><span id="updated"></span></div>
+  <header class="hero">
+    <h1>Alles, was ich <em>baue.</em></h1>
+    <p class="lead">Apps, ein Spiel, Videos und Werkzeuge, entstanden mit KI. Hier halte ich jedes Projekt fest, damit nichts verloren geht.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+</div>
+<div class="bar"><div class="wrap"><div class="filters" id="filters" role="group" aria-label="Nach Art filtern"></div></div></div>
+<main class="wrap"><div class="grid" id="grid"></div></main>
+<div class="wrap"><footer><span>danielgit8.github.io</span><a href="https://github.com/Danielgit8">GitHub ↗</a></footer></div>
+
+<dialog id="vid">
+  <form method="dialog"><button class="btn" aria-label="Video schließen">Schließen ✕</button></form>
+  <video controls playsinline preload="none"></video>
+</dialog>
+
+<script src="projects.js"></script>
+<script>
+const P = window.PROJECTS || [];
+const STATUS = {live: 'Live', privat: 'Privat', lokal: 'Lokal'};
+const MONTHS = ['Jan','Feb','März','Apr','Mai','Juni','Juli','Aug','Sep','Okt','Nov','Dez'];
+const fmtMonth = d => { const [y, m] = d.split('-'); return MONTHS[+m - 1] + ' ' + y; };
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const ART = {
+  para: `<div class="art art-para"><div class="p-grid">
+      <div>Projekte<b>12</b></div><div>Bereiche<b>6</b></div><div>Ressourcen<b>48</b></div><div>Archiv<b>31</b></div></div>
+      <div class="habits">${'on on on . on on . on on on on . on on'.split(' ').map(x => `<i class="${x === 'on' ? 'on' : ''}"></i>`).join('')}</div></div>`,
+  francais: `<div class="art art-fr"><div class="flag"><i></i><i></i><i></i></div>
+      <p>Je m’appelle Daniel.</p><small>Ich heiße Daniel. · Niveau A1</small></div>`,
+  academy: `<div class="art art-ac"><div class="rays">${['#00a3e0','#46b6e8','#6cc24a','#9fd36a','#f6a800','#f2c44b','#e94e77'].map(c => `<i style="background:${c}"></i>`).join('')}</div>
+      <div><b>Academy</b><br><small>Kurse · Akademien · Theme-Editor</small></div></div>`,
+  cache: `<div class="art art-cache"><div class="term">
+      <div class="row"><span class="ok">Cache 4:12</span><span>Treffer 92 %</span><span>Kontext ☀</span><span>Compact</span></div>
+      <div class="meter"><i></i></div><div class="prompt">› Frag Claude etwas …</div></div></div>`,
+  waechter: `<div class="art art-w"><div>Claude/</div><div>├─ PARA Cockpit/</div><div>├─ Krallen-Spiel/</div>
+      <div>├─ <span class="bad">notiz.txt</span></div><div class="good">└─ ✓ jedes Projekt im eigenen Ordner</div></div>`
+};
+
+function cover(p) {
+  const c = p.cover || {};
+  if (c.type === 'img') return `<div class="cover"><img src="${esc(c.src)}" alt="${esc(p.title)}" loading="lazy"></div>`;
+  if (c.type === 'video') return `<div class="cover"><img src="${esc(c.poster)}" alt="${esc(p.title)}" loading="lazy">
+      <button class="play" data-video="${esc(c.src)}" aria-label="Video abspielen">▶</button></div>`;
+  return `<div class="cover">${ART[c.id] || ''}</div>`;
+}
+
+function card(p, i) {
+  const links = (p.links || []).map((l, j) => `<a class="btn ${j === 0 ? 'primary' : ''}" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('');
+  const video = p.cover && p.cover.type === 'video' ? `<button class="btn primary" data-video="${esc(p.cover.src)}">Video ansehen</button>` : '';
+  return `<article class="card ${i === 0 ? 'feature' : ''}" data-kind="${esc(p.kind)}">
+    ${cover(p)}
+    <div class="body">
+      <div class="meta"><span class="status s-${p.status}">${STATUS[p.status] || p.status}</span><span class="sep">/</span><span>${esc(p.kind)}</span><span class="sep">/</span><span>${fmtMonth(p.date)}</span></div>
+      <h2>${esc(p.title)}</h2>
+      <p class="desc">${esc(p.desc)}</p>
+      ${p.extras ? `<ul class="extras">${p.extras.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
+      <ul class="tags">${(p.tags || []).map(t => `<li>${esc(t)}</li>`).join('')}</ul>
+      <div class="foot">${links}${video}${p.folder ? `<span class="folder">Ordner: ${esc(p.folder)}</span>` : ''}</div>
+    </div></article>`;
+}
+
+const kinds = [...new Set(P.map(p => p.kind))];
+let active = 'Alle';
+try { active = sessionStorage.getItem('pf-filter') || 'Alle'; } catch (e) {}
+if (active !== 'Alle' && !kinds.includes(active)) active = 'Alle';
+
+function render() {
+  const list = active === 'Alle' ? P : P.filter(p => p.kind === active);
+  document.getElementById('grid').innerHTML = list.length ? list.map(card).join('') : '<p class="empty">Keine Projekte in dieser Kategorie.</p>';
+  document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.k === active));
+}
+document.getElementById('filters').innerHTML = ['Alle', ...kinds].map(k =>
+  `<button class="chip" data-k="${esc(k)}">${esc(k)}<small>${k === 'Alle' ? P.length : P.filter(p => p.kind === k).length}</small></button>`).join('');
+document.getElementById('filters').addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  active = b.dataset.k; try { sessionStorage.setItem('pf-filter', active); } catch (err) {}
+  render();
+});
+document.getElementById('stats').innerHTML = [
+  [P.length, 'Projekte'], [P.filter(p => p.status === 'live').length, 'online'], [kinds.length, 'Kategorien']
+].map(([n, l]) => `<div class="stat"><b>${n}</b><span>${l}</span></div>`).join('');
+if (window.UPDATED) { const [y, m, d] = window.UPDATED.split('-'); document.getElementById('updated').textContent = `Stand ${+d}. ${MONTHS[+m - 1]} ${y}`; }
+
+const dlg = document.getElementById('vid'), vid = dlg.querySelector('video');
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-video]'); if (!b) return;
+  vid.src = b.dataset.video; dlg.showModal(); vid.play().catch(() => {});
+});
+dlg.addEventListener('close', () => { vid.pause(); vid.removeAttribute('src'); vid.load(); });
+render();
+</script>
+</body>
+</html>
