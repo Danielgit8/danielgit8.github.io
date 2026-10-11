@@ -28,6 +28,10 @@
   /* Kopf */
   .top{display:flex;justify-content:space-between;align-items:center;padding:22px 0;font:500 13px var(--mono);color:var(--muted);letter-spacing:.02em}
   .top b{color:var(--text);font-weight:500}
+  .top-r{display:flex;align-items:center;gap:14px}
+  #install{padding:7px 14px;font-size:13px}
+  #install[hidden]{display:none}
+  @media (max-width:480px){#updated{display:none}}
   .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:10px;vertical-align:1px}
   header.hero{padding:56px 0 40px;border-bottom:1px solid var(--line)}
   h1{font:400 clamp(52px,9vw,112px)/.95 var(--serif);letter-spacing:-.02em;margin:0 0 22px}
@@ -122,7 +126,8 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><span><span class="dot"></span><b>Daniel</b> · Projekte</span><span id="updated"></span></div>
+  <div class="top"><span><span class="dot"></span><b>Daniel</b> · Projekte</span>
+    <span class="top-r"><button class="btn primary" id="install" hidden>Als App installieren</button><span id="updated"></span></span></div>
   <header class="hero">
     <h1>Alles, was ich <em>baue.</em></h1>
     <p class="lead">Apps, ein Spiel, Videos und Werkzeuge, entstanden mit KI. Hier halte ich jedes Projekt fest, damit nichts verloren geht.</p>
@@ -142,6 +147,13 @@
 <script>
 // Die installierbare Portfolio-App gilt nur für /index.html, damit /varg/ und die anderen Apps eigene Apps bleiben
 if (location.hostname.endsWith('github.io') && location.pathname === '/') history.replaceState(null, '', '/index.html' + location.search + location.hash);
+// Offline-Cache nur für die Portfolio-Seite selbst
+if ('serviceWorker' in navigator && location.protocol === 'https:')
+  navigator.serviceWorker.register('sw.js', {scope: location.hostname.endsWith('github.io') ? '/index.html' : './'}).catch(() => {});
+// Knopf „Als App installieren“, sobald der Browser die Installation anbietet
+let installEvt = null;
+addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; document.getElementById('install').hidden = false; });
+addEventListener('appinstalled', () => { document.getElementById('install').hidden = true; });
 const P = window.PROJECTS || [];
 const STATUS = {live: 'Live', privat: 'Privat', lokal: 'Lokal'};
 const MONTHS = ['Jan','Feb','März','Apr','Mai','Juni','Juli','Aug','Sep','Okt','Nov','Dez'];
@@ -214,6 +226,11 @@ document.addEventListener('click', e => {
   vid.src = b.dataset.video; dlg.showModal(); vid.play().catch(() => {});
 });
 dlg.addEventListener('close', () => { vid.pause(); vid.removeAttribute('src'); vid.load(); });
+document.getElementById('install').addEventListener('click', async () => {
+  if (!installEvt) return;
+  installEvt.prompt(); await installEvt.userChoice; installEvt = null;
+  document.getElementById('install').hidden = true;
+});
 render();
 </script>
 </body>
