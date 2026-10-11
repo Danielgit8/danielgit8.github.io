@@ -140,6 +140,8 @@
 
 <script src="projects.js"></script>
 <script>
+// Die installierbare Portfolio-App gilt nur für /index.html, damit /varg/ und die anderen Apps eigene Apps bleiben
+if (location.hostname.endsWith('github.io') && location.pathname === '/') history.replaceState(null, '', '/index.html' + location.search + location.hash);
 const P = window.PROJECTS || [];
 const STATUS = {live: 'Live', privat: 'Privat', lokal: 'Lokal'};
 const MONTHS = ['Jan','Feb','März','Apr','Mai','Juni','Juli','Aug','Sep','Okt','Nov','Dez'];
