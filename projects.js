@@ -41,9 +41,9 @@ window.PROJECTS = [
     kind: 'App',
     date: '2026-10',
     status: 'live',
-    desc: 'Mein Personal-Brand-Plan als eigene App: 31 Schritte nach Mino Lee, eine Video-Werkstatt von der Idee bis zum Posten, mein Brand-Profil und das Wissen aus allen Creator-Videos zum Nachschlagen. Gleicher Login wie das Cockpit.',
-    tags: ['Web-App', 'Supabase', 'Content'],
-    cover: {type: 'art', id: 'brandweg'},
+    desc: 'Mein Personal-Brand-Plan als filmische App: 31 Schritte nach Mino Lee in sechs fotorealistischen Welten, ein Studio mit Hook-Labor, Skript-Check und Teleprompter, Brand-Profil mit Format-Karte und eine Zahlen-Seite, die Ausreißer-Videos findet. Gleicher Login wie das Cockpit.',
+    tags: ['Web-App', 'Supabase', 'Motion', 'GPT Image'],
+    cover: {type: 'img', src: 'assets/brand-weg-cover.jpg'},
     links: [
       {label: 'Öffnen', url: 'https://danielgit8.github.io/brand-weg/'},
       {label: 'Code', url: 'https://github.com/Danielgit8/brand-weg'}
