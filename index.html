@@ -97,6 +97,10 @@
   .art-fr .flag i{flex:1}.art-fr .flag i:nth-child(1){background:#8ea0ff}.art-fr .flag i:nth-child(2){background:#fff}.art-fr .flag i:nth-child(3){background:#e5483f}
   .art-fr p{margin:0;font:italic 400 clamp(30px,4vw,40px)/1.05 var(--serif)}
   .art-fr small{font:500 13px var(--mono);opacity:.75}
+  .art-bw{background:linear-gradient(135deg,#B4530F,#E08A1E);color:#fff;flex-direction:column;justify-content:center;padding:26px 28px;gap:10px}
+  .art-bw small{font:600 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+  .art-bw p{margin:0;font:700 clamp(22px,3vw,28px)/1.15 var(--sans,system-ui);letter-spacing:-.02em}
+  .art-bw .steps{display:flex;gap:6px;margin-top:6px}.art-bw .steps i{width:22px;height:6px;border-radius:9px;background:rgba(255,255,255,.35)}.art-bw .steps i.on{background:#fff}
   .art-ac{background:#efeee8;padding:22px;flex-direction:column;justify-content:space-between;color:#1d1d1b}
   .art-ac .rays{display:flex;gap:6px;height:56%}
   .art-ac .rays i{flex:1;border-radius:2px}
@@ -156,6 +160,8 @@ const ART = {
   para: `<div class="art art-para"><div class="p-grid">
       <div>Projekte<b>12</b></div><div>Bereiche<b>6</b></div><div>Ressourcen<b>48</b></div><div>Archiv<b>31</b></div></div>
       <div class="habits">${'on on on . on on . on on on on . on on'.split(' ').map(x => `<i class="${x === 'on' ? 'on' : ''}"></i>`).join('')}</div></div>`,
+  brandweg: `<div class="art art-bw"><small>Jetzt dran · Phase 1</small><p>Kurs-Tag 1: Dein erstes Video</p>
+      <div class="steps">${[1,1,1,0,0,0,0,0,0,0].map(x => `<i class="${x ? 'on' : ''}"></i>`).join('')}</div></div>`,
   francais: `<div class="art art-fr"><div class="flag"><i></i><i></i><i></i></div>
       <p>Je m’appelle Daniel.</p><small>Ich heiße Daniel. · Niveau A1</small></div>`,
   academy: `<div class="art art-ac"><div class="rays">${['#00a3e0','#46b6e8','#6cc24a','#9fd36a','#f6a800','#f2c44b','#e94e77'].map(c => `<i style="background:${c}"></i>`).join('')}</div>

@@ -1,7 +1,7 @@
 // Alle Projekte. Neues Projekt = neuen Eintrag oben einfügen.
 // status: 'live' (online erreichbar) | 'privat' (nicht öffentlich) | 'lokal' (nur auf dem Laptop)
 // cover: {type:'img', src} | {type:'video', poster, src} | {type:'art', id}  (id = CSS-Motiv in index.html)
-window.UPDATED = '2026-10-11';
+window.UPDATED = '2026-10-19';
 window.PROJECTS = [
   {
     title: 'VARG – Krallen der Wut',
@@ -35,6 +35,20 @@ window.PROJECTS = [
       'Whiteboard (Excalidraw) fürs Cockpit',
       'Anleitungen: Französisch-Tagesablauf, HyperLingua-Methode, Rosenkranz'
     ]
+  },
+  {
+    title: 'Brand-Weg',
+    kind: 'App',
+    date: '2026-10',
+    status: 'live',
+    desc: 'Mein Personal-Brand-Plan als eigene App: 31 Schritte nach Mino Lee, eine Video-Werkstatt von der Idee bis zum Posten, mein Brand-Profil und das Wissen aus allen Creator-Videos zum Nachschlagen. Gleicher Login wie das Cockpit.',
+    tags: ['Web-App', 'Supabase', 'Content'],
+    cover: {type: 'art', id: 'brandweg'},
+    links: [
+      {label: 'Öffnen', url: 'https://danielgit8.github.io/brand-weg/'},
+      {label: 'Code', url: 'https://github.com/Danielgit8/brand-weg'}
+    ],
+    folder: 'PARA Cockpit/brand-weg'
   },
   {
     title: 'Français A1',
