@@ -22,7 +22,7 @@ window.PROJECTS = [
     kind: 'App',
     date: '2026-10',
     status: 'live',
-    desc: 'Mein zweites Gehirn nach der PARA-Methode: Habit-Tracker, Aufgaben, Projekte, Bereiche, Ressourcen und Notizen, alles verknüpft. Mit Login auf Laptop und Handy.',
+    desc: 'Erst mein zweites Gehirn nach der PARA-Methode, seit Ende Oktober ein Begleiter für jeden Tag: morgens ein kurzer Check, dann nur eine Aufgabe mit Zwei-Minuten-Start, abends eine Minute Rückblick. Aufgebaut nach den fünf Schritten aus Dominik Lebersorgers Video „Leben reparieren“. Aufgaben, Gewohnheiten, Training, Ernährung und Notizen liegen unter „Werkzeuge“. Mit Login auf Laptop und Handy, auch offline.',
     tags: ['Web-App', 'Supabase', 'Offline'],
     cover: {type: 'art', id: 'para'},
     links: [
