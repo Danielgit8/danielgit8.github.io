@@ -1,8 +1,19 @@
 // Alle Projekte. Neues Projekt = neuen Eintrag oben einfügen.
 // status: 'live' (online erreichbar) | 'privat' (nicht öffentlich) | 'lokal' (nur auf dem Laptop)
 // cover: {type:'img', src} | {type:'video', poster, src} | {type:'art', id}  (id = CSS-Motiv in index.html)
-window.UPDATED = '2026-10-19';
+window.UPDATED = '2026-11-05';
 window.PROJECTS = [
+  {
+    title: 'Schnitt-Planer',
+    kind: 'Werkzeug',
+    date: '2026-11',
+    status: 'lokal',
+    desc: 'Mein eigenes Schnitt-Werkzeug für Talking-Head-Videos: Whisper schreibt das Transkript Wort für Wort, Pausen fliegen automatisch raus, und ich plane im Browser jeden Satz selbst: Gesicht oder B-Roll aus meiner Sammlung, Zoom, markierte Wörter im Untertitel, Versprecher per Klick raus. Ein Knopf rendert das fertige Video mit ffmpeg. Idee nach Josephs Workflow „Videos schneiden nur mit Claude“.',
+    tags: ['Python', 'ffmpeg', 'Whisper', 'Video'],
+    cover: {type: 'img', src: 'assets/schnitt-planer-cover.jpg'},
+    links: [],
+    folder: 'PARA Cockpit/schnitt-planer'
+  },
   {
     title: 'VARG – Krallen der Wut',
     kind: 'Spiel',
