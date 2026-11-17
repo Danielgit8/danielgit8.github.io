@@ -33,7 +33,7 @@ window.PROJECTS = [
     kind: 'App',
     date: '2026-10',
     status: 'live',
-    desc: 'Erst mein zweites Gehirn nach der PARA-Methode, inzwischen mein Begleiter für jeden Tag. Auf „Heute“ steht eine einzige Liste: meine täglichen Basics, die festen Aufgaben für meine Ziele und abends ein kurzer Rückblick. Dazu kommen „Meine Ziele“, eine Sammlung mit Lesestoff, ein Content Studio für meine Video-Ideen, Training, Ernährung und Notizen. Im Kalender seh ich meine ganze Woche auf einen Blick: Habits zum Abhaken, Aufgaben, Training und Content, eingeplant per Ziehen. Mit Login auf Laptop und Handy, auch offline.',
+    desc: 'Erst mein zweites Gehirn nach der PARA-Methode, dann ein riesiges Life OS mit Journal, Kalender und Content Studio. Am 17.11. hab ich es radikal verkleinert, weil mich die vielen Funktionen verzettelt haben. Jetzt gibt es nur noch vier Sachen: Heute mit den Aufgaben, die ich für heute markiert hab, meine Ziele mit je einer Aufgabenliste pro Weg, Geld mit Produkttabelle, Ernährungsplan und Einkaufsliste, und einen Plus-Knopf für schnelle Notizen. Alles lässt sich umbenennen, sortieren und ausblenden, aber keine neuen Bereiche anlegen. Mit Login auf Laptop und Handy, auch offline.',
     tags: ['Web-App', 'Supabase', 'Offline'],
     cover: {type: 'art', id: 'para'},
     links: [
